@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-search.css">
+        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/multi-style-layer.js"></script>
+        <script src="js/leaflet-svg-shape-markers.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+        <script src="js/leaflet-search.js"></script>
+        <script src="data/VISTAGENERAL_1.js"></script>
+        <script src="data/LONAS_2.js"></script>
+        <script src="data/PERSONASAFILIADAS_3.js"></script>
+        <script src="data/LIDERESDECOMITE_4.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[19.410306550800218,-101.73809869044915],[19.90328661812204,-100.7766861140908]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_GoogleHybrid_0');
+        map.getPane('pane_GoogleHybrid_0').style.zIndex = 400;
+        var layer_GoogleHybrid_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleHybrid_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 18
+        });
+        layer_GoogleHybrid_0;
+        map.addLayer(layer_GoogleHybrid_0);
+        function pop_VISTAGENERAL_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>SECCION</strong><br />' + (feature.properties['SECCION'] !== null ? autolinker.link(feature.properties['SECCION'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">DISTRITO</th>\
+                        <td>' + (feature.properties['DISTRITO'] !== null ? autolinker.link(feature.properties['DISTRITO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">AFILIACION</th>\
+                        <td>' + (feature.properties['AFILIACION'] !== null ? autolinker.link(feature.properties['AFILIACION'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">COMITE</th>\
+                        <td>' + (feature.properties['COMITE'] !== null ? autolinker.link(feature.properties['COMITE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+        function style_VISTAGENERAL_1_0(feature) {
+            var context = {
+                feature: feature,
+                variables: {}
+            };
+            // Start of if blocks and style check logic
+            if (exp_VISTAGENERAL_1rule0_eval_expression(context)) {
+                  return {
+                pane: 'pane_VISTAGENERAL_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.4)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,0.4)',
+                interactive: true,
+            };
+                }
+                else if (exp_VISTAGENERAL_1rule1_eval_expression(context)) {
+                  return {
+                pane: 'pane_VISTAGENERAL_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.4)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(163,25,27,0.4)',
+                interactive: true,
+            };
+                }
+                else if (exp_VISTAGENERAL_1rule2_eval_expression(context)) {
+                  return {
+                pane: 'pane_VISTAGENERAL_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(243,205,15,0.4)',
+                interactive: true,
+            };
+                }
+                else if (exp_VISTAGENERAL_1rule3_eval_expression(context)) {
+                  return {
+                pane: 'pane_VISTAGENERAL_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.4)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(37,242,22,0.4)',
+                interactive: true,
+            };
+                }
+            else {
+                return {fill: false, stroke: false};
+            }
+        }
+        function style_VISTAGENERAL_1_1(feature) {
+            var context = {
+                feature: feature,
+                variables: {}
+            };
+            // Start of if blocks and style check logic
+            if (exp_VISTAGENERAL_1rule0_eval_expression(context)) {
+                  return {
+                pane: 'pane_VISTAGENERAL_1',
+                opacity: 1,
+                color: 'rgba(255,255,255,0.4)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: true,
+            };
+                }
+                else if (exp_VISTAGENERAL_1rule1_eval_expression(context)) {
+                  return {
+                pane: 'pane_VISTAGENERAL_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.4)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: true,
+            };
+                }
+                else if (exp_VISTAGENERAL_1rule2_eval_expression(context)) {
+                  return {
+                pane: 'pane_VISTAGENERAL_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.4)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: true,
+            };
+                }
+                else if (exp_VISTAGENERAL_1rule3_eval_expression(context)) {
+                  return {
+                pane: 'pane_VISTAGENERAL_1',
+                opacity: 1,
+                color: 'rgba(0,0,0,0.36078431372549025)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: true,
+            };
+                }
+            else {
+                return {fill: false, stroke: false};
+            }
+        }
+        map.createPane('pane_VISTAGENERAL_1');
+        map.getPane('pane_VISTAGENERAL_1').style.zIndex = 401;
+        map.getPane('pane_VISTAGENERAL_1').style['mix-blend-mode'] = 'normal';
+        var layer_VISTAGENERAL_1 = new L.geoJson.multiStyle(json_VISTAGENERAL_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_VISTAGENERAL_1',
+            layerName: 'layer_VISTAGENERAL_1',
+            pane: 'pane_VISTAGENERAL_1',
+            onEachFeature: pop_VISTAGENERAL_1,
+            styles: [style_VISTAGENERAL_1_0,style_VISTAGENERAL_1_1,]
+        });
+        bounds_group.addLayer(layer_VISTAGENERAL_1);
+        map.addLayer(layer_VISTAGENERAL_1);
+        function pop_LONAS_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">PERTENECE</th>\
+                        <td>' + (feature.properties['PERTENECE'] !== null ? autolinker.link(feature.properties['PERTENECE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">SECCION</th>\
+                        <td>' + (feature.properties['SECCION'] !== null ? autolinker.link(feature.properties['SECCION'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">DOMICILIO</th>\
+                        <td>' + (feature.properties['DOMICILIO'] !== null ? autolinker.link(feature.properties['DOMICILIO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_LONAS_2_0() {
+            return {
+                pane: 'pane_LONAS_2',
+                shape: 'diamond',
+                radius: 8.8,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,188,17,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_LONAS_2');
+        map.getPane('pane_LONAS_2').style.zIndex = 402;
+        map.getPane('pane_LONAS_2').style['mix-blend-mode'] = 'normal';
+        var layer_LONAS_2 = new L.geoJson(json_LONAS_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_LONAS_2',
+            layerName: 'layer_LONAS_2',
+            pane: 'pane_LONAS_2',
+            onEachFeature: pop_LONAS_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_LONAS_2_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_LONAS_2);
+        map.addLayer(layer_LONAS_2);
+        function pop_PERSONASAFILIADAS_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">NAFILIADO</th>\
+                        <td>' + (feature.properties['NAFILIADO'] !== null ? autolinker.link(feature.properties['NAFILIADO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">SECCION</th>\
+                        <td>' + (feature.properties['SECCION'] !== null ? autolinker.link(feature.properties['SECCION'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_PERSONASAFILIADAS_3_0() {
+            return {
+                pane: 'pane_PERSONASAFILIADAS_3',
+                radius: 6.8,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(60,43,145,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_PERSONASAFILIADAS_3');
+        map.getPane('pane_PERSONASAFILIADAS_3').style.zIndex = 403;
+        map.getPane('pane_PERSONASAFILIADAS_3').style['mix-blend-mode'] = 'normal';
+        var layer_PERSONASAFILIADAS_3 = new L.geoJson(json_PERSONASAFILIADAS_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_PERSONASAFILIADAS_3',
+            layerName: 'layer_PERSONASAFILIADAS_3',
+            pane: 'pane_PERSONASAFILIADAS_3',
+            onEachFeature: pop_PERSONASAFILIADAS_3,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_PERSONASAFILIADAS_3_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_PERSONASAFILIADAS_3);
+        map.addLayer(layer_PERSONASAFILIADAS_3);
+        function pop_LIDERESDECOMITE_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">NAFILIADO</th>\
+                        <td>' + (feature.properties['NAFILIADO'] !== null ? autolinker.link(feature.properties['NAFILIADO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">SECCION</th>\
+                        <td>' + (feature.properties['SECCION'] !== null ? autolinker.link(feature.properties['SECCION'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_LIDERESDECOMITE_4_0() {
+            return {
+                pane: 'pane_LIDERESDECOMITE_4',
+                radius: 11.200000000000001,
+                opacity: 1,
+                color: 'rgba(227,197,26,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,35,1,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_LIDERESDECOMITE_4');
+        map.getPane('pane_LIDERESDECOMITE_4').style.zIndex = 404;
+        map.getPane('pane_LIDERESDECOMITE_4').style['mix-blend-mode'] = 'normal';
+        var layer_LIDERESDECOMITE_4 = new L.geoJson(json_LIDERESDECOMITE_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_LIDERESDECOMITE_4',
+            layerName: 'layer_LIDERESDECOMITE_4',
+            pane: 'pane_LIDERESDECOMITE_4',
+            onEachFeature: pop_LIDERESDECOMITE_4,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_LIDERESDECOMITE_4_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_LIDERESDECOMITE_4);
+        map.addLayer(layer_LIDERESDECOMITE_4);
+        var osmGeocoder = new L.Control.Geocoder({
+            collapsed: true,
+            position: 'topleft',
+            text: 'Search',
+            title: 'Testing'
+        }).addTo(map);
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .className += ' fa fa-search';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .title += 'Search for a place';
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/LIDERESDECOMITE_4.png" /> LIDERES DE COMITE': layer_LIDERESDECOMITE_4,'<img src="legend/PERSONASAFILIADAS_3.png" /> PERSONAS AFILIADAS': layer_PERSONASAFILIADAS_3,'<img src="legend/LONAS_2.png" /> LONAS': layer_LONAS_2,'VISTA GENERAL<br /><table><tr><td style="text-align: center;"><img src="legend/VISTAGENERAL_1_ERROR0.png" /></td><td>ERROR</td></tr><tr><td style="text-align: center;"><img src="legend/VISTAGENERAL_1_afiliacionbaja1.png" /></td><td>afiliacion baja</td></tr><tr><td style="text-align: center;"><img src="legend/VISTAGENERAL_1_afiliacionmedia2.png" /></td><td>afiliacion media</td></tr><tr><td style="text-align: center;"><img src="legend/VISTAGENERAL_1_afiliacionalta3.png" /></td><td>afiliacion alta</td></tr></table>': layer_VISTAGENERAL_1,"Google Hybrid": layer_GoogleHybrid_0,}).addTo(map);
+        map.on("zoomend", function(){
+
+                if (map.hasLayer(layer_VISTAGENERAL_1)) {
+                    if (map.getZoom() <= 8 && map.getZoom() >= 19) {
+                        layer_VISTAGENERAL_1.eachLayer(function (layer) {
+                            layer.openTooltip();
+                        });
+                    } else {
+                        layer_VISTAGENERAL_1.eachLayer(function (layer) {
+                            layer.closeTooltip();
+                        });
+                    }
+                }
+        });
+        setBounds();
+        var i = 0;
+        layer_VISTAGENERAL_1.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['SECCION'] !== null?String('<div style="color: #ffffff; font-size: 11pt; font-weight: bold; font-family: \'Open Sans\', sans-serif;">' + layer.feature.properties['SECCION']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_VISTAGENERAL_1'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+                if (map.hasLayer(layer_VISTAGENERAL_1)) {
+                    if (map.getZoom() <= 8 && map.getZoom() >= 19) {
+                        layer_VISTAGENERAL_1.eachLayer(function (layer) {
+                            layer.openTooltip();
+                        });
+                    } else {
+                        layer_VISTAGENERAL_1.eachLayer(function (layer) {
+                            layer.closeTooltip();
+                        });
+                    }
+                }
+        map.addControl(new L.Control.Search({
+            layer: layer_VISTAGENERAL_1,
+            initial: false,
+            hideMarkerOnCollapse: true,
+            propertyName: 'SECCION'}));
+        document.getElementsByClassName('search-button')[0].className +=
+         ' fa fa-binoculars';
+        resetLabels([layer_VISTAGENERAL_1]);
+        map.on("zoomend", function(){
+            resetLabels([layer_VISTAGENERAL_1]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_VISTAGENERAL_1]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_VISTAGENERAL_1]);
+        });
+        </script>
+    </body>
+</html>
